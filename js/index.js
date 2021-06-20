@@ -3,20 +3,35 @@ const result = document.getElementById("resultat");
 
 console.log(result.classList[1]);
 let array = [];
+let temporary = "";
 for (let index = 0; index < listener.length; index++) {
   listener[index].addEventListener("click", function () {
     buttonAnimation(this.classList[2]);
     let getValeur = this.textContent;
-    if(getValeur != '=') {
-      array.push(getValeur);
-    } else {
-      calculator();
-      array = [];
-    }
+    value(getValeur);
   });
   
 }
 
+function value(getValeur) {
+  console.log("getValeur ", getValeur);
+  if (getValeur != "+" || getValeur != '-' || getValeur != 'x' || getValeur != '/') {
+    temporary += getValeur;
+    console.log("valeur: ");
+    console.log(temporary);
+  } else {
+    console.log("ici");
+    if(getValeur != '=') {
+      
+      array.push(temporary);
+      array.push(getValeur);
+      temporary = "";
+    } else {
+      calculator();
+      array = [];
+    }
+  }
+}
 
 function calculator() {
   let resultat = 0;
@@ -29,7 +44,7 @@ function calculator() {
           array[index + 2] = parseInt(array[index]) + parseInt(array[index + 2]);
           break;
         case '-':
-          array[index + 2] =  parseInt(array[index]) - parseInt(array[index + 2]);
+          array[index + 2] = parseInt(array[index]) - parseInt(array[index + 2]);
           break;
         case 'x':
           array[index + 2] = parseInt(array[index + 2]) * parseInt(array[index]);
