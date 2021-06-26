@@ -1,17 +1,27 @@
 const listener = document.querySelectorAll(".pad-item");
 const result = document.getElementById("resultat");
 
-console.log(result.classList[1]);
 let array = [];
+let temp = "";
+
 for (let index = 0; index < listener.length; index++) {
   listener[index].addEventListener("click", function () {
     buttonAnimation(this.classList[2]);
     let getValeur = this.textContent;
-    if(getValeur != '=') {
+
+    if (getValeur == "+" || getValeur == "-" || getValeur == "x" || getValeur == "/") {
+      console.log("valeur: ", temp);
+      array.push(temp);
       array.push(getValeur);
-    } else {
+      temp = "";
+    } else if(getValeur === '=') {
+      array.push(temp);
       calculator();
       array = [];
+      temp = "";
+    } else {
+      temp += getValeur;
+      console.log("valeur 1: ", temp);
     }
   });
   
@@ -26,16 +36,16 @@ function calculator() {
     if (index + 1 < array.length && (index + 1)%2 != 0) {
       switch (array[index + 1]) {
         case '+':
-          array[index + 2] = parseInt(array[index]) + parseInt(array[index + 2]);
+          array[index + 2] = parseFloat(array[index]) + parseFloat(array[index + 2]);
           break;
         case '-':
-          array[index + 2] =  parseInt(array[index]) - parseInt(array[index + 2]);
+          array[index + 2] = parseFloat(array[index]) - parseFloat(array[index + 2]);
           break;
         case 'x':
-          array[index + 2] = parseInt(array[index + 2]) * parseInt(array[index]);
+          array[index + 2] = parseFloat(array[index]) * parseFloat(array[index + 2]);
           break;
         case '/':
-          array[index + 2] = parseInt(array[index + 2]) / parseInt(array[index]);
+          array[index + 2] = parseFloat(array[index]) / parseFloat(array[index + 2]);
           break;      
         default:
           console.error('404');
