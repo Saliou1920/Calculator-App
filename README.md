@@ -4,7 +4,7 @@
 
 ## Welcome! 👋
 
-- Live Site URL: [Here](https://saliou1920.github.io/3-column-preview-card-component/)
+- Live Site URL: [Here](https://saliou1920.github.io/Calculator-App/)
 
 ## Table of contents
 
