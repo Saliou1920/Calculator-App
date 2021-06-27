@@ -4,10 +4,13 @@ body {
   padding: 0;
   background-color: hsl(222, 26%, 31%);
 }
-
+h1,
+h3 {
+  color: hsl(30, 25%, 89%);
+}
 .container {
-  min-width: 20%;
-  max-width: 25%;
+  /* min-width: 20%; */
+  max-width: 30%;
   text-align: center;
   margin: 0 auto;
   margin-top: 5%;
@@ -25,6 +28,8 @@ body {
 }
 .results-item {
   padding: 3% 5%;
+  font-size: 2em;
+  color: hsl(30, 25%, 89%);
 }
 
 .pad {
@@ -74,4 +79,12 @@ body {
 .pressed {
   box-shadow: 0 3px 4px 0 #dbedf3;
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .container {
+    /* min-width: 20%; */
+    max-width: 60%;
+  }
 }
