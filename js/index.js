@@ -8,25 +8,25 @@ for (let index = 0; index < listener.length; index++) {
   listener[index].addEventListener("click", function () {
     buttonAnimation(this.classList[2]);
     let getValeur = this.textContent;
-
-    if (getValeur == "+" || getValeur == "-" || getValeur == "x" || getValeur == "/") {
+    if (getValeur == "+" || getValeur == "-" || getValeur == "x" || getValeur == "/" || getValeur == "=") {
       console.log("valeur: ", temp);
       array.push(temp);
-      array.push(getValeur);
+      getValeur === "=" ? (calculator(), (array = [])) : array.push(getValeur); 
       temp = "";
-    } else if(getValeur === '=') {
-      array.push(temp);
-      calculator();
-      array = [];
-      temp = "";
+    } else if (getValeur == "Reset") {
+        array = [];
+        temp = "";
+        result.innerHTML = 0;
+    } else if (getValeur == "DEL") {
+        temp == "" ? array.pop : temp = "";
     } else {
       temp += getValeur;
+      result.innerHTML = temp;
       console.log("valeur 1: ", temp);
     }
   });
   
 }
-
 
 function calculator() {
   let resultat = 0;
